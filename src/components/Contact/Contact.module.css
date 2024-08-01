@@ -1,0 +1,9 @@
+.contactInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.contactName {
+  margin-bottom: 4px;
+}
