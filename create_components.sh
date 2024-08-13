@@ -1,7 +1,7 @@
-for dir in App Contact ContactForm ContactList SearchBox; do
-    mkdir -p src/components/$dir &&
+for dir in HomePage RegistrationPage LoginPage ContactsPage; do
+    mkdir -p src/pages/$dir &&
     for ext in .jsx .module.css; do
-        file="src/components/$dir/$dir$ext"
+        file="src/pages/$dir/$dir$ext"
         touch $file
         if [[ $ext == ".jsx" ]]; then
             echo "import css from './$dir.module.css';

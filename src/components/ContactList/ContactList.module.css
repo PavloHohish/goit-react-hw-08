@@ -7,10 +7,11 @@
 .contactContainer {
   display: flex;
   gap: 12px;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  padding: 8px;
+  padding: 12px;
   border: 1px solid #020202;
   border-radius: 4px;
-  width: calc(33.33% - 12px);
+  width: calc((100% - 24px) / 3);
+  background-color: var(--elements-background-color);
 }

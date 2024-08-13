@@ -1,9 +1,19 @@
+.contact {
+  display: flex;
+  gap: 8px;
+}
+
+.contactInfoContainer {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .contactInfo {
   display: flex;
   align-items: baseline;
   gap: 4px;
-}
-
-.contactName {
-  margin-bottom: 4px;
+  height: 28px;
 }

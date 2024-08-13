@@ -1,16 +1,15 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
 import css from './Contact.module.css';
-import clsx from 'clsx';
 import { FaUser, FaPhoneAlt } from 'react-icons/fa';
 
 export default function Contact({ contact: { id, name, number } }) {
-  const dispatch = useDispatch();
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <>
-      <ul>
-        <li className={clsx(css.contactInfo, css.contactName)}>
+    <div className={css.contactInfoContainer}>
+      <ul className={css.contact}>
+        <li className={css.contactInfo}>
           <FaUser className={css.firstIcon} size="12" />
           <p className={css.contactInfoFirst}>{name}</p>
         </li>
@@ -19,7 +18,9 @@ export default function Contact({ contact: { id, name, number } }) {
           <p>{number}</p>
         </li>
       </ul>
-      <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
-    </>
+      <button onClick={() => setShowModal(true)}>Delete</button>
+
+      {showModal && <Modal id={id} setShowModal={setShowModal} />}
+    </div>
   );
 }

@@ -2,13 +2,13 @@ import { useId } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/ops';
 import css from './ContactForm.module.css';
 
 export default function ContactForm() {
-  const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
+  const dispatch = useDispatch();
 
   const contactSchema = Yup.object().shape({
     name: Yup.string()
@@ -16,6 +16,7 @@ export default function ContactForm() {
       .max(50, 'Too Long!')
       .required('Required'),
     number: Yup.string()
+      .matches(/^\d+$/, 'Invalid phone number. Only digits are allowed')
       .min(3, 'Too short')
       .max(15, 'Too long')
       .required('Required'),
@@ -28,7 +29,11 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (values, actions) => {
-    dispatch(addContact(values));
+    const formattedValues = {
+      ...values,
+      number: `+${values.number}`,
+    };
+    dispatch(addContact(formattedValues));
     actions.resetForm();
   };
 
