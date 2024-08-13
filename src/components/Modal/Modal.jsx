@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/ops';
+import { deleteContact } from '../../redux/contacts/operations';
 import css from './Modal.module.css';
 
 export default function Modal({ id, setShowModal }) {
